@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 // Single brand font via next/font (self-hosted, non-blocking)
@@ -96,6 +97,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
       <body className="font-poppins antialiased overflow-x-hidden max-w-full">
         {children}
+        <SpeedInsights />
       </body>
     </html>
   );
