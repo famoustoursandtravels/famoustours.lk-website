@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
-import { FiChevronDown, FiChevronUp } from "react-icons/fi";
+import { ChevronDown, ChevronUp } from "lucide-react";
 import heroImage from "@/public/images/FAQ-hero.webp";
 import Breadcrumb from "@/components/Breadcrumb";
 
@@ -105,9 +105,9 @@ export default function FAQ() {
                       {item.question}
                     </h4>
                     {isOpen ? (
-                      <FiChevronUp className="text-blue-500 w-5 h-5" />
+                      <ChevronUp className="text-blue-500 w-5 h-5" aria-hidden />
                     ) : (
-                      <FiChevronDown className="text-blue-500 w-5 h-5" />
+                      <ChevronDown className="text-blue-500 w-5 h-5" aria-hidden />
                     )}
                   </button>
 

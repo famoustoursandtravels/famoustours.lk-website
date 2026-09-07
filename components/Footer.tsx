@@ -2,9 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { FaFacebookF, FaInstagram } from "react-icons/fa";
-import { MdEmail } from "react-icons/md";
-import { BsTelephoneFill } from "react-icons/bs";
+import { Facebook, Instagram, Mail, Phone } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -39,7 +37,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="hover:text-[#fda720] transition-colors"
               >
-                <FaFacebookF />
+                <Facebook className="h-[1em] w-[1em]" aria-hidden />
               </a>
               <a
                 href="https://instagram.com"
@@ -47,7 +45,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="hover:text-[#fda720] transition-colors"
               >
-                <FaInstagram />
+                <Instagram className="h-[1em] w-[1em]" aria-hidden />
               </a>
             </div>
           </div>
@@ -103,7 +101,7 @@ export default function Footer() {
           <div className="flex flex-col items-center md:items-start">
             <h4 className="font-bold mb-3 text-white">CONTACT US</h4>
             <div className="flex items-center gap-2 mb-2 text-sm justify-center md:justify-start">
-              <BsTelephoneFill className="text-white flex-shrink-0" />
+              <Phone className="text-white flex-shrink-0 h-4 w-4" aria-hidden />
               <a
                 href="tel:+94773499157"
                 className="hover:text-[#fda720] transition-colors"
@@ -112,7 +110,7 @@ export default function Footer() {
               </a>
             </div>
             <div className="flex items-center gap-2 text-sm justify-center md:justify-start">
-              <MdEmail className="text-white text-xl flex-shrink-0" />
+              <Mail className="text-white flex-shrink-0 h-5 w-5" aria-hidden />
               <a
                 href="mailto:info@famoustoursandtravels.com"
                 className="hover:text-[#fda720] transition-colors"

@@ -5,7 +5,7 @@ import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ContactForm from "@/components/ContactForm";
-import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
+import { MapPin, Phone, Mail } from "lucide-react";
 import heroImage from "@/public/images/ContactUs-hero.webp";
 import Breadcrumb from "@/components/Breadcrumb";
 
@@ -53,7 +53,7 @@ export default function ContactUsPage() {
             <div className="flex flex-col items-center text-center">
               <div className="flex items-center justify-center gap-3 mb-2">
                 <div className="bg-sky-400 text-white p-3 rounded-full">
-                  <FaMapMarkerAlt className="text-xl" />
+                  <MapPin className="h-5 w-5" aria-hidden />
                 </div>
                 <h4 className="text-lg font-bold">Location</h4>
               </div>
@@ -69,7 +69,7 @@ export default function ContactUsPage() {
             <div className="flex flex-col items-center text-center">
               <div className="flex items-center justify-center gap-3 mb-2">
                 <div className="bg-sky-400 text-white p-3 rounded-full">
-                  <FaPhoneAlt className="text-xl" />
+                  <Phone className="h-5 w-5" aria-hidden />
                 </div>
                 <h4 className="text-lg font-bold">Give us a call</h4>
               </div>
@@ -81,7 +81,7 @@ export default function ContactUsPage() {
             <div className="flex flex-col items-center text-center">
               <div className="flex items-center justify-center gap-3 mb-2">
                 <div className="bg-sky-400 text-white p-3 rounded-full">
-                  <FaEnvelope className="text-xl" />
+                  <Mail className="h-5 w-5" aria-hidden />
                 </div>
                 <h4 className="text-lg font-bold">Write for anything</h4>
               </div>
