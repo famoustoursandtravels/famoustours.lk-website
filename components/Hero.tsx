@@ -5,9 +5,11 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import ImageGallery from "./ImageGallery";
 import BookNowButton from "./Button";
-import RotatingText from "./RotatingText";
+import dynamic from "next/dynamic";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+const RotatingText = dynamic(() => import("./RotatingText"), { ssr: false });
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -105,10 +107,11 @@ export default function Hero() {
       {/* Real image layer behind everything */}
       <div className="absolute inset-0 -z-10">
         <Image
-          src="/images/Home.jpg"
+          src="/images/Home.webp"
           alt="Sri Lanka landscape"
           fill
           priority
+          sizes="100vw"
           className="hero-bg object-cover will-change-transform"
         />
       </div>
@@ -120,20 +123,20 @@ export default function Hero() {
 
       {/* Clouds */}
       <Image
-        src="/images/Cloud.png"
+        src="/images/Cloud.webp"
         alt="Cloud"
-        width={1200}
-        height={800}
+        width={900}
+        height={900}
         className={`absolute z-5 transition-all duration-[2000ms] ease-out ${
           isLoaded ? "left-1/4 transform -translate-x-1/2" : "-left-full"
         }`}
         style={{ maxWidth: "50vw" }}
       />
       <Image
-        src="/images/Cloud.png"
+        src="/images/Cloud.webp"
         alt="Cloud"
         width={800}
-        height={533}
+        height={800}
         className={`absolute top-10 z-4 transition-all duration-[2500ms] ease-out ${
           isLoaded ? "right-1/4 transform translate-x-1/2" : "-right-full"
         }`}

@@ -57,6 +57,7 @@ export default function SplashPage() {
         loop
         muted
         playsInline
+        preload="metadata"
         className="absolute top-0 left-0 w-full h-full object-cover z-0"
       >
         <source src="/videos/splash-bg.mp4" type="video/mp4" />
@@ -94,7 +95,7 @@ export default function SplashPage() {
           className="mt-8"
         >
           <Image
-            src="/images/logo.png"
+                        src="/images/logo.webp"
             alt="Famous Tours and Travels logo"
             width={320}
             height={200}
