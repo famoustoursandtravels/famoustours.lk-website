@@ -67,7 +67,7 @@ export default function FAQ() {
       {/* Breadcrumb */}
       <Breadcrumb
                   items={[
-                    { label: "Home", href: "/home" },
+                    { label: "Home", href: "/" },
                     { label: "FAQ" },
                   ]}
                 />

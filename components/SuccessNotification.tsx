@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 interface SuccessNotificationProps {
   show: boolean;
@@ -13,14 +13,29 @@ const SuccessNotification: React.FC<SuccessNotificationProps> = ({
   title,
   message,
 }) => {
-  // Auto-close after 5 seconds
+  const [progress, setProgress] = useState(100);
+
+  // Auto-close after 5 seconds and animate progress 100% → 0%
   useEffect(() => {
-    if (show) {
-      const timer = setTimeout(() => {
-        onClose();
-      }, 5000);
-      return () => clearTimeout(timer);
+    if (!show) {
+      setProgress(100);
+      return;
     }
+
+    setProgress(100);
+    // Double rAF so the browser paints at 100% before transitioning to 0%
+    const frame = requestAnimationFrame(() => {
+      requestAnimationFrame(() => setProgress(0));
+    });
+
+    const timer = setTimeout(() => {
+      onClose();
+    }, 5000);
+
+    return () => {
+      cancelAnimationFrame(frame);
+      clearTimeout(timer);
+    };
   }, [show, onClose]);
 
   if (!show) return null;
@@ -28,9 +43,7 @@ const SuccessNotification: React.FC<SuccessNotificationProps> = ({
   return (
     <div className="fixed top-0 left-0 right-0 z-50 flex justify-center">
       <div
-        className={`bg-white border border-gray-200 rounded-b-lg shadow-xl max-w-md mx-4 mt-0 transform transition-all duration-500 ease-out ${
-          show ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
-        }`}
+        className="bg-white border border-gray-200 rounded-b-lg shadow-xl max-w-md mx-4 mt-0 transform transition-all duration-500 ease-out translate-y-0 opacity-100"
       >
         <div className="p-4">
           <div className="flex items-start">
@@ -73,11 +86,11 @@ const SuccessNotification: React.FC<SuccessNotificationProps> = ({
             </div>
           </div>
 
-          {/* Progress bar */}
+          {/* Progress bar — drains from 100% to 0% over 5s */}
           <div className="mt-3 bg-gray-200 rounded-full h-1">
             <div
               className="bg-[#fda720] h-1 rounded-full transition-all duration-[5000ms] ease-linear"
-              style={{ width: show ? "0%" : "100%" }}
+              style={{ width: `${progress}%` }}
             ></div>
           </div>
         </div>
