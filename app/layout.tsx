@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Poppins } from "next/font/google";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 // FONTS
@@ -113,6 +114,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
       <body className="font-poppins antialiased overflow-x-hidden max-w-full">
         {children}
+        <SpeedInsights />
       </body>
     </html>
   );
