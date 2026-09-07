@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
@@ -97,6 +98,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
       <body className="font-poppins antialiased overflow-x-hidden max-w-full">
         {children}
+        <Analytics />
         <SpeedInsights />
       </body>
     </html>
