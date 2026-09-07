@@ -142,7 +142,7 @@ export default function WelcomeSection() {
       >
         <Image
           src="/images/logo.png"
-          alt="Famous Tours Logo"
+          alt="Famous Tours and Travels logo"
           width={350}
           height={350}
           className="welcome-logo object-contain max-w-full h-auto will-change-transform"

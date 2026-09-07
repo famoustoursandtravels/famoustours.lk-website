@@ -95,7 +95,7 @@ export default function SplashPage() {
         >
           <Image
             src="/images/logo.png"
-            alt="Famous Tours & Travels"
+            alt="Famous Tours and Travels logo"
             width={320}
             height={200}
             style={{ width: 'auto', height: '200px' }}

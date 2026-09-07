@@ -322,7 +322,7 @@ const TourBookingForm: React.FC = () => {
                 <option value="wellness">Tranquil Escape</option>
                 <option value="wildlife">Wild Lanka</option>
                 <option value="budget">Ceylon On a Budget</option>
-                <option value="luxary">Luxary Island Lanka</option>
+                <option value="luxury">Luxury Island Retreat</option>
                 <option value="eco">Eco Ceylon</option>
                 <option value="family">Family Fun in Sri Lanka</option>
               </select>

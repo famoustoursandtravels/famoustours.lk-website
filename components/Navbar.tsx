@@ -113,7 +113,7 @@ export default function Navbar() {
         {/* Logo */}
         <Image
           src="/images/logo.png"
-          alt="Logo"
+          alt="Famous Tours and Travels logo"
           width={50}
           height={50}
           className="object-contain"

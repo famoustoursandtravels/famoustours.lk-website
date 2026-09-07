@@ -105,7 +105,7 @@ export default function Footer() {
             <div className="flex items-center gap-2 mb-2 text-sm justify-center md:justify-start">
               <BsTelephoneFill className="text-white flex-shrink-0" />
               <a
-                href="tel:+94773491157"
+                href="tel:+94773499157"
                 className="hover:text-[#fda720] transition-colors"
               >
                 +94 77 349 9157

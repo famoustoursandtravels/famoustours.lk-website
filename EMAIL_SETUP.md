@@ -1,80 +1,83 @@
 # Email Configuration Setup
 
-## Setting up Email for Booking Confirmations
+This app sends **internal notification emails only** (to `EMAIL_TO`). It does not email the customer a confirmation, and it does not attach PDFs.
 
-### 1. Gmail Setup (Recommended)
+Both endpoints use shared helpers in `lib/mail.ts`:
 
-1. **Enable 2-Factor Authentication:**
+- `POST /api/send-booking` — new booking requests
+- `POST /api/contact` — contact form messages
 
-   - Go to [Google Account Settings](https://myaccount.google.com/security)
-   - Enable 2-Step Verification
+Each message is sent with `Reply-To` set to the visitor/customer address so you can reply from your inbox.
 
-2. **Generate App Password:**
+## Required environment variables
 
-   - Go to Security > 2-Step Verification > App passwords
-   - Select "Mail" and "Other" (enter "Famous Tours App")
-   - Copy the generated 16-character password
+Create `.env.local` from `.env.example`:
 
-3. **Update Environment Variables:**
-   ```env
-   EMAIL_USER=your-email@gmail.com
-   EMAIL_PASS=your-16-character-app-password
-   COMPANY_EMAIL=bookings@famoustours.lk
-   ```
-
-### 2. Other Email Providers
-
-Update the `service` in `/app/api/send-booking/route.ts`:
-
-**Outlook/Hotmail:**
-
-```javascript
-service: "hotmail";
+```env
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_SECURE=false
+EMAIL_USER=your-email@gmail.com
+EMAIL_PASS=your-app-password-or-smtp-password
+EMAIL_FROM="Famous Tours & Travels <your-email@gmail.com>"
+EMAIL_TO=inbox@example.com
 ```
 
-**Yahoo:**
+| Variable | Purpose |
+|----------|---------|
+| `SMTP_HOST` | SMTP server hostname |
+| `SMTP_PORT` | Usually `587` (STARTTLS) or `465` (SSL) |
+| `SMTP_SECURE` | `true` only for SSL on port 465; otherwise `false` |
+| `EMAIL_USER` | SMTP login username |
+| `EMAIL_PASS` | SMTP password or app password |
+| `EMAIL_FROM` | From header (falls back to `EMAIL_USER` if empty) |
+| `EMAIL_TO` | Inbox that receives booking + contact notifications |
 
-```javascript
-service: "yahoo";
+If any required variable is missing, the API returns HTTP 500 with a JSON error — it does not crash the server.
+
+## Gmail (app password)
+
+1. Enable 2-Step Verification on the Google account
+2. Create an [App Password](https://myaccount.google.com/apppasswords) for Mail
+3. Use:
+
+```env
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_SECURE=false
+EMAIL_USER=your-email@gmail.com
+EMAIL_PASS=your-16-character-app-password
+EMAIL_FROM="Famous Tours & Travels <your-email@gmail.com>"
+EMAIL_TO=your-email@gmail.com
 ```
 
-**Custom SMTP:**
+## Other providers
 
-```javascript
-host: 'smtp.your-provider.com',
-port: 587,
-secure: false,
-```
+Point `SMTP_HOST` / `SMTP_PORT` / `SMTP_SECURE` at your provider (Outlook, Yahoo, cPanel, etc.). No `service:` field is used — configuration is entirely via these env vars in `lib/mail.ts`.
 
-### 3. Testing
+## Testing
 
-1. Fill out the booking form with a valid email
-2. Submit the form
-3. Check:
-   - Email inbox for confirmation
-   - Downloads folder for PDF
-   - Console for any errors
+1. Fill `.env.local` and restart `npm run dev`
+2. Submit the booking or contact form
+3. Confirm a message arrives in `EMAIL_TO`
+4. Reply to that message — it should go to the visitor (`Reply-To`)
 
-### 4. Security Notes
+## Security
 
-- Never commit `.env.local` to version control
-- Use app passwords, not your main password
-- Consider using a dedicated email account for the application
+- Never commit `.env.local`
+- Prefer app passwords / SMTP credentials over your main account password
+- Use a dedicated mailbox for the app when possible
 
-### 5. Troubleshooting
+## Troubleshooting
 
-**Email not sending:**
+**Email not sending / API returns 500**
 
-- Check environment variables are set correctly
-- Verify app password is correct
-- Check Gmail settings allow less secure apps (if not using app password)
+- Confirm every variable in `.env.example` is set in `.env.local`
+- Restart the dev server after editing env vars
+- Check the server console for `SMTP is not configured` / `missing EMAIL_TO` errors
+- Verify host, port, and credentials with your provider
 
-**PDF not generating:**
+**Gmail rejects login**
 
-- Check browser console for errors
-- Ensure all form fields are filled correctly
-
-**SMTP errors:**
-
-- Verify email provider settings
-- Check firewall/antivirus blocking SMTP
+- Use an app password, not your normal password
+- Confirm 2-Step Verification is enabled
