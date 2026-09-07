@@ -1,4 +1,9 @@
 import type { NextConfig } from "next";
+import bundleAnalyzer from "@next/bundle-analyzer";
+
+const withBundleAnalyzer = bundleAnalyzer({
+  enabled: process.env.ANALYZE === "true",
+});
 
 const nextConfig: NextConfig = {
   async redirects() {
@@ -10,6 +15,9 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  images: {
+    formats: ["image/avif", "image/webp"],
+  },
 };
 
-export default nextConfig;
+export default withBundleAnalyzer(nextConfig);

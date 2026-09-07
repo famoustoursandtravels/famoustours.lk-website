@@ -15,8 +15,8 @@ export default function MissionVision() {
               src="/images/mission-1.jpg"
               alt="Airplane window"
               fill /* makes it use the wrapper size */
+              sizes="(max-width: 768px) 100vw, 40vw"
               className="object-cover"
-              priority
             />
           </div>
         </div>

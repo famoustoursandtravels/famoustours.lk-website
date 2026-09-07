@@ -141,7 +141,7 @@ export default function WelcomeSection() {
         style={{ marginLeft: "40px", marginTop: "-30px" }}
       >
         <Image
-          src="/images/logo.png"
+          src="/images/logo.webp"
           alt="Famous Tours and Travels logo"
           width={350}
           height={350}

@@ -6,7 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Navbar from "@/components/Navbar";
 import Image from "next/image";
 import Footer from "@/components/Footer";
-import heroImage from "@/public/images/about-hero.jpg";
+import heroImage from "@/public/images/about-hero.webp";
 import MissionVision from "@/components/MissionVision";
 import AboutCollageSection from "@/components/AboutCollageSection";
 import Breadcrumb from "@/components/Breadcrumb";
@@ -50,6 +50,7 @@ export default function AboutUsPage() {
           src={heroImage}
           alt="Beach"
           fill
+          sizes="100vw"
           className="object-cover"
           priority
         />

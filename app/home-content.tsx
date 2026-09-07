@@ -2,16 +2,21 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import dynamic from "next/dynamic";
 
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import WelcomeSection from "@/components/WelcomeSection";
-import WhyChooseUs from "@/components/WhyChooseUs";
-import ThingsToDo from "@/components/ThingsToDo";
-import Gallery from "@/components/Gallery";
-import PackageSection from "@/components/PackageSection";
 import Footer from "@/components/Footer";
-import VelocityMarqueeSection from "@/components/VelocityMarqueeSection";
+
+// Below-the-fold / heavy animation sections — load after first paint
+const WelcomeSection = dynamic(() => import("@/components/WelcomeSection"));
+const WhyChooseUs = dynamic(() => import("@/components/WhyChooseUs"));
+const ThingsToDo = dynamic(() => import("@/components/ThingsToDo"));
+const PackageSection = dynamic(() => import("@/components/PackageSection"));
+const Gallery = dynamic(() => import("@/components/Gallery"));
+const VelocityMarqueeSection = dynamic(
+  () => import("@/components/VelocityMarqueeSection")
+);
 
 export default function HomeContent() {
   const router = useRouter();

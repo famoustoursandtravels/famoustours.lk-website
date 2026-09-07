@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import Form from "@/components/TourBookingForm";
 
 import Breadcrumb from "@/components/Breadcrumb";
-import heroImage from "@/public/images/booking.jpg";
+import heroImage from "@/public/images/booking.webp";
 
 export default function AboutUsPage() {
   return (
@@ -18,6 +18,7 @@ export default function AboutUsPage() {
           src={heroImage}
           alt="mountains"
           fill
+          sizes="100vw"
           className="object-cover"
           priority
         />

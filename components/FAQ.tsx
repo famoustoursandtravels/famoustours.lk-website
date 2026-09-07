@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
-import heroImage from "@/public/images/FAQ-hero.jpg";
+import heroImage from "@/public/images/FAQ-hero.webp";
 import Breadcrumb from "@/components/Breadcrumb";
 
 const faqData = [
@@ -53,6 +53,7 @@ export default function FAQ() {
           src={heroImage}
           alt="tress"
           fill
+          sizes="100vw"
           className="object-cover"
           priority
         />

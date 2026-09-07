@@ -19,12 +19,11 @@ export default function VelocityMarqueeSection() {
             className="inline-flex items-center gap-3 align-middle"
           >
             <Image
-              src="/images/logo.png"
+              src="/images/logo.webp"
               alt="Famous Tours and Travels logo"
               width={160}
               height={160}
               className="inline-block h-[1em] w-auto object-contain align-middle"
-              priority
             />
             <span> Famous Tours &amp; Travels </span>
           </span>,

@@ -219,7 +219,6 @@ export default function ThingsToDo() {
                     width={720}
                     height={920}
                     className="object-contain select-none pointer-events-none w-full h-auto drop-shadow-xl"
-                    priority
                   />
                 </div>
 
@@ -404,8 +403,8 @@ export default function ThingsToDo() {
                       src={`/images/locations/${active.slug}.jpg`}
                       alt={active.name}
                       fill
+                      sizes="(max-width: 768px) 100vw, 28rem"
                       className="object-cover"
-                      priority
                     />
                   </motion.div>
                 </AnimatePresence>
