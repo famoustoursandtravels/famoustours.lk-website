@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { SITE_URL, ogImage } from "@/lib/site";
 import "./globals.css";
 
 // Single brand font via next/font (self-hosted, non-blocking)
@@ -13,11 +14,22 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: "Famous Tours and Travels",
   description: "Explore Sri Lanka like never before!",
   icons: {
     icon: [{ url: "/Favicon.png", type: "image/png" }],
     shortcut: ["/Favicon.png"],
+  },
+  openGraph: {
+    siteName: "Famous Tours & Travels",
+    type: "website",
+    locale: "en_LK",
+    images: [ogImage],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [ogImage.url],
   },
 };
 

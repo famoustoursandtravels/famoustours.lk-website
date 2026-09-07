@@ -1,3 +1,5 @@
+import { ogImage } from "@/lib/site";
+
 export const metadata = {
   title: "Famous Tours & Travels – Explore Sri Lanka Your Way",
   description:
@@ -9,8 +11,9 @@ export const metadata = {
     title: "Famous Tours & Travels – Explore Sri Lanka Your Way",
     description:
       "Discover Sri Lanka with personalized tour packages, cultural highlights, and breathtaking adventures. Your journey begins with Famous Tours & Travels.",
-    url: "https://famoustoursandtravels.com/",
+    url: "https://famoustours.lk/",
     type: "website",
+    images: [ogImage],
   },
 };
 

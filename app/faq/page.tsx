@@ -1,3 +1,5 @@
+import { ogImage } from "@/lib/site";
+
 export const metadata = {
   title: "FAQ | Famous Tours & Travels",
   description:
@@ -9,8 +11,9 @@ export const metadata = {
     title: "Frequently Asked Questions",
     description:
       "Learn more about tour packages, booking details, pricing, itinerary flexibility, and other travel-related FAQs for Famous Tours & Travels.",
-    url: "https://famoustoursandtravels.com/faq",
+    url: "https://famoustours.lk/faq",
     type: "website",
+    images: [ogImage],
   },
 };
 

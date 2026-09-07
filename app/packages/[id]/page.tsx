@@ -1,3 +1,5 @@
+import { ogImage } from "@/lib/site";
+
 export const metadata = {
   title: "Sri Lanka Travel Package | Famous Tours & Travels",
   description:
@@ -10,6 +12,7 @@ export const metadata = {
     description:
       "Explore day-by-day itineraries and experience highlights of this curated Sri Lanka tour package.",
     type: "website",
+    images: [ogImage],
   },
 };
 
